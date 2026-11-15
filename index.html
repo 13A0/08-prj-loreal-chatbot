@@ -1,64 +1,118 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chat Assistant</title>
+    <title>Smart Product Advisor | L’Oréal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
   </head>
-
   <body>
     <div class="page-wrapper">
-      <!------- Header / Branding ------->
       <header class="site-header">
-        <h1 class="site-title">Smart Product Advisor</h1>
+        <div class="header-content">
+          <img
+            src="img/loreal-logo.png"
+            alt="L’Oréal"
+            width="500"
+            height="91"
+          />
+          <a href="https://www.lorealparisusa.com/"
+            >Explore products <span aria-hidden="true">↗</span></a
+          >
+        </div>
       </header>
 
-      <!------- Chat Area ------->
       <main>
-        <section class="chatbox">
-          <div id="chatWindow" class="chat-window">
-            <!-- messages will be appended here via JS -->
+        <h1 class="site-title">Smart Product Advisor</h1>
+        <p class="intro">
+          Find L’Oréal Paris products for your skin, hair, or makeup routine.
+        </p>
+
+        <section class="chatbox" aria-labelledby="chatTitle">
+          <div class="chat-header">
+            <h2 id="chatTitle">
+              <span class="sparkle" aria-hidden="true">✦</span> Beauty chat
+            </h2>
+            <button type="button" id="newChatBtn" class="new-chat" disabled>
+              <span aria-hidden="true">↻</span> New chat
+            </button>
           </div>
 
-          <form id="chatForm" class="chat-form">
-            <label for="userInput" class="visually-hidden">Message</label>
-            <input
-              id="userInput"
-              name="userInput"
-              type="text"
-              placeholder="Ask me about products or routines…"
-              autocomplete="off"
-              required
-            />
-            <button type="submit" id="sendBtn">
-              <span class="material-icons">send</span>
-              <span class="visually-hidden">Send</span>
-            </button>
-          </form>
+          <div class="chat-body">
+            <div
+              id="chatWindow"
+              class="chat-window"
+              role="log"
+              aria-label="Conversation"
+              tabindex="0"
+            >
+              <p class="msg ai">
+                <span class="visually-hidden">Advisor: </span>Hi! Tell me your
+                beauty goals, and I’ll help you find L’Oréal Paris products that
+                fit your routine.
+              </p>
+            </div>
+
+            <div
+              id="suggestions"
+              class="suggestions"
+              role="group"
+              aria-label="Suggested questions"
+            >
+              <button
+                type="button"
+                data-question="Can you help me build a simple L’Oréal Paris skincare routine for dry skin?"
+              >
+                Skincare routine
+              </button>
+              <button
+                type="button"
+                data-question="Which L’Oréal Paris shampoo would you suggest for color-treated hair?"
+              >
+                Haircare picks
+              </button>
+              <button
+                type="button"
+                data-question="What’s a good L’Oréal Paris mascara for a natural everyday look?"
+              >
+                Everyday makeup
+              </button>
+            </div>
+          </div>
+
+          <div class="composer">
+            <form id="chatForm" class="chat-form">
+              <label for="userInput" class="visually-hidden"
+                >Your message</label
+              >
+              <input
+                id="userInput"
+                name="userInput"
+                type="text"
+                placeholder="Ask about a product or routine…"
+                maxlength="1000"
+                autocomplete="off"
+                required
+              />
+              <button type="submit" id="sendBtn">
+                Send <span aria-hidden="true">↑</span>
+              </button>
+            </form>
+            <p id="chatStatus" class="chat-status" role="status"></p>
+          </div>
         </section>
       </main>
 
-      <!------- Footer Links ------->
       <footer class="site-footer">
-        <p>&copy; 2025 Company Name. All rights reserved.</p>
-        <nav>
-          <!-- These URLs are placeholders -->
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Use</a>
-          <a href="#">Contact</a>
-        </nav>
+        <p>Global Career Accelerator student project</p>
       </footer>
     </div>
-
-    <script src="script.js"></script>
   </body>
 </html>
